@@ -1,20 +1,32 @@
-dictionary = {
-  "Bug" : "An error in a program that prevents the program from running as expected.",
+from replit import clear
 
-  "Function" : "A piece of code that you can easily call over and over again."
+from art import logo
 
-  
-}
+print(logo)
+
+bids = {}
+bidding_finished = False
+
+def find_highest_bidder(bidding_record):
+  highest_bid = 0
+  winner = ""
+  # bidding_record = {"Angela": 123, "James": 321}
+  for bidder in bidding_record:
+    bid_amount = bidding_record[bidder]
+    if bid_amount > highest_bid: 
+      highest_bid = bid_amount
+      winner = bidder
+  print(f"The winner is {winner} with a bid of ${highest_bid}")
+
+while not bidding_finished:
+  name = input("What is your name?: ")
+  price = int(input("What is your bid?: $"))
+  bids[name] = price
+  should_continue = input("Are there any other bidders? Type 'yes or 'no'.\n")
+  if should_continue == "no":
+    bidding_finished = True
+    find_highest_bidder(bids)
+  elif should_continue == "yes":
+    clear()
 
 
-
-# added_word = input("What is the new word you want to add: ")
-# added_def = input("What is the definition of the new word: ")
-
-# # dictionary[added_word] = added_def
-
-# # dictionary["Bug"] = "A moth in your computer"
-# print(dictionary["Bug"])
-
-for things in dictionary:
-  print(dictionary[things])
